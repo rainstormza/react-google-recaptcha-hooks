@@ -1,10 +1,10 @@
 {
   "name": "react-google-recaptcha-hooks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Made with create-react-library",
-  "author": "armspkt",
+  "author": "rainstormza",
   "license": "MIT",
-  "repository": "armspkt/react-google-recaptcha-hooks",
+  "repository": "rainstormza/react-google-recaptcha-hooks",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",

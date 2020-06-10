@@ -13,16 +13,40 @@ npm install --save react-google-recaptcha-hooks
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import React from 'react'
+import { useGoogleReCaptchaV2 } from 'react-google-recaptcha-hooks'
 
-import MyComponent from 'react-google-recaptcha-hooks'
-import 'react-google-recaptcha-hooks/dist/index.css'
+const App = () => {
+  const {
+    ReCaptchaBadge,
+    executeReCaptcha,
+    resetReCaptcha
+  } = useGoogleReCaptchaV2({
+    siteKey: '',
+    language: 'en'
+  })
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
+  const handleClick = async () => {
+    const token = await executeReCaptcha()
+    console.log('token:', token)
+
+    setTimeout(() => {
+      resetReCaptcha()
+    }, 3000)
   }
+  return (
+    <div>
+      test{' '}
+      <div>
+        {ReCaptchaBadge}
+
+        <button onClick={handleClick}>Click</button>
+      </div>
+    </div>
+  )
 }
+
+export default App
 ```
 
 ## License

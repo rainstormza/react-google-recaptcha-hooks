@@ -1,10 +1,34 @@
 import React from 'react'
-
-import { ExampleComponent } from 'react-google-recaptcha-hooks'
-import 'react-google-recaptcha-hooks/dist/index.css'
+import { useGoogleReCaptchaV2 } from 'react-google-recaptcha-hooks'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  const {
+    ReCaptchaBadge,
+    executeReCaptcha,
+    resetReCaptcha
+  } = useGoogleReCaptchaV2({
+    siteKey: '6LfER7MUAAAAAAWtV9QK1aAaMXwEct6AINoVGoTz',
+    language: 'en'
+  })
+
+  const handleClick = async () => {
+    const token = await executeReCaptcha()
+    console.log('token:', token)
+
+    setTimeout(() => {
+      resetReCaptcha()
+    }, 3000)
+  }
+  return (
+    <div>
+      test{' '}
+      <div>
+        {ReCaptchaBadge}
+
+        <button onClick={handleClick}>Click</button>
+      </div>
+    </div>
+  )
 }
 
 export default App
