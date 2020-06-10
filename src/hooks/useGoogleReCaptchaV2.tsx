@@ -48,12 +48,12 @@ export const useGoogleReCaptchaV2: TGoogleReCaptchaV2Hook = ({
       console.error(ERROR_SCRIPT_NOT_AVAILABLE)
     }
 
-    // try {
-    //   const { getResponse, reset } = grecaptcha
-    //   if (getResponse()) {
-    //     reset()
-    //   }
-    // } catch (e) {}
+    try {
+      const { getResponse, reset } = grecaptcha
+      if (getResponse()) {
+        reset()
+      }
+    } catch (e) { }
   }
 
   const executeReCaptcha = () => {
@@ -120,7 +120,7 @@ export const useGoogleReCaptchaV2: TGoogleReCaptchaV2Hook = ({
       injectScript(
         SCRIPT_ID,
         `${GOOGLE_RECAPTCHA_V2_SCRIPT}?render=onload${
-          language ? `&hl=${language}` : ''
+        language ? `&hl=${language}` : ''
         }`,
         onLoadInjectedScript
       )

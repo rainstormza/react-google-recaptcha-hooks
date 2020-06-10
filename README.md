@@ -28,7 +28,6 @@ const App = () => {
 
   const handleClick = async () => {
     const token = await executeReCaptcha()
-    console.log('token:', token)
 
     setTimeout(() => {
       resetReCaptcha()
@@ -36,12 +35,9 @@ const App = () => {
   }
   return (
     <div>
-      test{' '}
-      <div>
         {ReCaptchaBadge}
 
         <button onClick={handleClick}>Click</button>
-      </div>
     </div>
   )
 }
